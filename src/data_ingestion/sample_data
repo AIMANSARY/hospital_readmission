@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Load full data
+df = pd.read_csv(r"C:\Users\aimaa\OneDrive\Desktop\hospital_readmission\data\processed\hospital_readmissions_cleaned.csv")
+
+print("Original:", df.shape)
+print("Readmitted distribution:")
+print(df['readmitted'].value_counts())
+
+# Sample 50 NO + 50 YES = 100 total
+sample = df.groupby('readmitted', group_keys=False).apply(lambda x: x.sample(min(50, len(x))))
+sample.to_csv(r"C:\Users\aimaa\OneDrive\Desktop\hospital_readmission\data\processed\hospital_readmissions_sample_100.csv", index=False)
+
+print("Saved 100-row sample!")
+print(sample.shape)
+print(sample['readmitted'].value_counts())
