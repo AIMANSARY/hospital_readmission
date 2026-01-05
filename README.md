@@ -1,69 +1,66 @@
-Hospital Readmission Prediction
+Hospital Readmission Prediction using Feature-Store-Driven ML Pipeline
+
 Project Overview
+Hospital readmissions within 30 days are a major challenge for healthcare systems, impacting patient outcomes and operational costs.
+This project implements an end-to-end machine learning pipeline to predict hospital readmissions using a feature-store-based architecture, multiple models, and systematic evaluation.
 
-Hospital readmissions are costly and often preventable.
-This project builds a machine learning pipeline to predict whether a patient is likely to be readmitted to the hospital, helping healthcare providers take proactive action and improve patient outcomes.
+The pipeline is designed to be modular, reproducible, and extensible, following best practices in data engineering and applied machine learnin
 
-The project implements an end-to-end machine learning workflow including:
+Objectives
 
-Data ingestion
+1. Build a feature-store-driven data pipeline for hospital readmission prediction
 
-Data cleaning & sampling
+2. Compare multiple machine learning models on the same feature set
 
-Feature engineering
+3. Identify the most influential clinical features driving readmission risk
 
-Model training & evaluation
+4. Analyze model trade-offs relevant to real-world healthcare decision-making
 
-Reproducible project structure
-
-Objective
-
-To predict hospital readmission (Yes / No) using patient and admission-related data, with a focus on:
-
-Clean data pipelines
-
-Reproducible experiments
-
-Practical ML engineering practices
-
-Tech Stack
-
-Python 3
-
-Pandas, NumPy – data processing
-
-Scikit-learn – machine learning
-
-VS Code – development
-
-Git & GitHub – version control
-
-Dataset link
 
 Research Questions Addressed
- 1.	RQ1: How effectively can a feature-store-based pipeline improve hospital readmission prediction?
- 2.	RQ2: Which clinical features contribute most strongly to readmission risk?
+RQ1: How effectively can a feature-store-based pipeline improve hospital readmission prediction?
+Answered by comparing model performance using a shared engineered feature set.
 
- Project Structure
+RQ2: Which clinical features contribute most strongly to readmission risk?
+Answered using Random Forest feature importance analysis.
 
+RQ3:How does model choice affect the trade-off between precision and recall in hospital readmission prediction?
+Answered through metric comparison and a precision–recall visualization.
+
+Project Structure
  ```text
 hospital_readmission/
 │
 ├── data/
-│   ├── raw/              # Original dataset
-│   ├── processed/        # Cleaned / transformed data (ignored in Git)
+│   ├── raw/                 # Original dataset
+│   ├── cleaned/             # Cleaned data
+│   └── processed/           # Feature-store-ready dataset
 │
 ├── src/
-│   ├── data_ingestion/   # Data loading & sampling
-│   ├── data_cleaning/    # Cleaning & preprocessing
 │   ├── feature_engineering/
-│   ├── modeling/         # Model training scripts
-│   ├── evaluation/       # Evaluation & outputs
+│   │   └── build_features.py
+│   ├── modeling/
+│   │   ├── train_model.py
+│   │   ├── compare_models.py
+│   │   └── feature_importance.py
+│   └── evaluation/
+│       └── rq3_precision_recall_plot.py
 │
-├── notebooks/            # Experiments & analysis
-├── figures/              # Visualizations
-├── requirements.txt      # Python dependencies
-├── .gitignore
-└── README.md
+├── dags/
+│   └── project_pipeline_dag.py
+│
+├── tables/
+│   ├── baseline_model_metrics.csv
+│   ├── model_comparison_metrics.csv
+│   └── feature_importance_rf.csv
+│
+├── figures/
+│   ├── model_comparison_roc.png
+│   ├── feature_importance_rf.png
+│   └── precision_recall_comparison.png
+│
+├── README.md
+└── requirements.txt
+
 ```
 
