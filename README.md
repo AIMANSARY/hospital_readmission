@@ -41,6 +41,8 @@ Git & GitHub – version control
 Dataset link
 
 Research Questions Addressed
+ 1.	RQ1: How effectively can a feature-store-based pipeline improve hospital readmission prediction?
+ 2.	RQ2: Which clinical features contribute most strongly to readmission risk?
 
  Project Structure
 
