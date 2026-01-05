@@ -4,7 +4,7 @@ Project Overview
 Hospital readmissions are costly and often preventable.
 This project builds a machine learning pipeline to predict whether a patient is likely to be readmitted to the hospital, helping healthcare providers take proactive action and improve patient outcomes.
 
-The project covers the end-to-end ML workflow:
+The project implements an end-to-end machine learning workflow including:
 
 Data ingestion
 
